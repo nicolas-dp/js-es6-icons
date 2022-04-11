@@ -57,8 +57,11 @@ const team = [
 const elementoDomOver = document.querySelector(".over_18")
 const elementoDomUnder = document.querySelector(".under_18")
 
+let leastArray = [];
 team.forEach(elementoTeam => {
   if (elementoTeam.eta >= 18) {
+
+    leastArray.push(`Il signor ${elementoTeam.nome} ${elementoTeam.cognome}, può guidare l'auto`)
     const elementMarkup = `
         <div class="row">
         Il signor ${elementoTeam.nome} ${elementoTeam.cognome}, può guidare l'auto, in quanto ha ${elementoTeam.eta} anni
@@ -66,7 +69,10 @@ team.forEach(elementoTeam => {
     `
     elementoDomOver.insertAdjacentHTML("beforebegin", elementMarkup)
 
+
   } else {
+    leastArray.push(`Il signor ${elementoTeam.nome} ${elementoTeam.cognome}, NON può guidare l'auto in quanto minorenne. Età:${elementoTeam.eta}`)
+    
     const elementMarkup = ` 
     <div class="row">
     Il signor ${elementoTeam.nome} ${elementoTeam.cognome}, NON può guidare l'auto in quanto minorenne. Età:${elementoTeam.eta}
@@ -75,3 +81,5 @@ team.forEach(elementoTeam => {
     elementoDomUnder.insertAdjacentHTML("beforebegin", elementMarkup)   
   }
 });
+
+console.log(leastArray);
